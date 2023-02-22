@@ -1,0 +1,60 @@
+{
+  "name": "okidrolance-front",
+  "version": "0.1.0",
+  "description": "okidrolance front server",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0 <=18.14.2",
+    "yarn": ">=1.22 <2.0"
+  },
+  "scripts": {
+    "start": "PORT=8080 react-scripts start",
+    "build": "react-scripts build",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint --fix '**/*.js'",
+    "test": "react-scripts test --watchAll=false --ci",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/lab": "^5.0.0-alpha.92",
+    "@mui/material": "^5.6.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0",
+    "recoil": "^0.7.2",
+    "axios": "^0.26.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "prettier": "^2.6.2",
+    "react-scripts": "5.0.1",
+    "react-test-renderer": "^18.0.0",
+    "typescript": "^4.6.3"
+  },
+  "main": "index.js",
+  "repository": "git@github.com:maitake4211/okidrolance-front.git",
+  "author": "maitake4211 <dmwajtgp4211@gmail.com>",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
