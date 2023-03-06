@@ -1,4 +1,5 @@
-const env = process.env;
-const baseUrl = env.baseUrl;
+import React from "react";
 
-export {baseUrl};
+const baseURL = process.env.REACT_APP_BASE_URL;
+
+export { baseURL };
