@@ -33,9 +33,9 @@ const DeviceDataChart: React.FC = () => {
   );
   else
   return(
-    <div className="h-screen w-screen items-center ">
-      <h1 className="flex justify-center">選択中のデバイス:{currentDevice}</h1>
-      <div className="flex justify-center p-3">
+    <div className="h-screen w-screen items-center">
+      <h1 className="flex justify-center text-2xl p-2">選択中のデバイス:{currentDevice}</h1>
+      <div className="h-1/3 w-full">
         <Line
           data={{
             labels: monitoringData.created_at,
@@ -50,7 +50,7 @@ const DeviceDataChart: React.FC = () => {
           options={options}
         />
       </div>
-      <div className="flex justify-center">
+      <div className="h-1/3 w-full">
         <Line
           data={{
             labels: monitoringData.created_at,
@@ -65,7 +65,7 @@ const DeviceDataChart: React.FC = () => {
           options={options}
         />
       </div>
-      <div className="flex justify-center">
+      <div className="h-1/3 w-full">
         <Line
           data={{
             labels: monitoringData.created_at,
