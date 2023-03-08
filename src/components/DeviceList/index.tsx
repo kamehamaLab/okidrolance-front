@@ -10,7 +10,7 @@ interface Device {
   location: string
 }
 
-const DeviceList: React.FC  = () =>{
+const DeviceList: React.FC = () => {
   const { data: devices, error } = useSWR<Device[], Error>(`${baseURL}devices`, fetcher);
   const setDevice = useSetRecoilState(selectDevice);
   if (error) return <div>Error....</div>;
