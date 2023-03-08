@@ -5,10 +5,10 @@ import fetcher from "../../lib/fetcher";
 import { useSetRecoilState } from "recoil";
 import { selectDevice } from "../../lib/recoil";
 
-interface Device {
+type Device = {
   id: number,
   location: string
-}
+};
 
 const DeviceList: React.FC = () => {
   const { data: devices, error } = useSWR<Device[], Error>(`${baseURL}devices`, fetcher);
