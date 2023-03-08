@@ -15,7 +15,7 @@ const DeviceDataChart: React.FC = () => {
     </div>
   );
   else return(
-    <div className="h-screen w-screen flex justify-center items-center">
+    <div className="flex justify-center">
       <h1>選択中のデバイス:{currentDevice}</h1>
     </div>
   );
