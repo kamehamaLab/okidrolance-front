@@ -23,7 +23,8 @@ const options: {} = {
 const DeviceDataChart: React.FC = () => {
   const currentDevice = useRecoilValue(selectDevice);
   const { data: monitoringData, error } = useSWR<MonitorData, Error>(`${baseURL}devices/${currentDevice}`, fetcher);
-  const labels = monitoringData?.created_at;
+  // if (error) return <div>Error....</div>;
+  // if (!monitoringData) return <div>Now Loading...</div>;
 
   if (currentDevice === 0 || monitoringData === undefined) return (
     <div className="h-screen w-screen flex justify-center items-center">
@@ -32,21 +33,53 @@ const DeviceDataChart: React.FC = () => {
   );
   else
   return(
-    <div className="flex justify-center">
-      <h1>選択中のデバイス:{currentDevice}</h1>
-      <Line
-        data={{
-          labels,
-          datasets:[
-            {
-              label: "temp",
-              data: monitoringData.temp,
-              borderColor: "rgb(75, 100, 192)",
-            },
-          ]
-        }}
-        options={options}
-      />
+    <div className="h-screen w-screen items-center ">
+      <h1 className="flex justify-center">選択中のデバイス:{currentDevice}</h1>
+      <div className="flex justify-center p-3">
+        <Line
+          data={{
+            labels: monitoringData.created_at,
+            datasets:[
+              {
+                label: "Temperture",
+                data: monitoringData.temp,
+                borderColor: "rgb(75, 100, 192)",
+              },
+            ]
+          }}
+          options={options}
+        />
+      </div>
+      <div className="flex justify-center">
+        <Line
+          data={{
+            labels: monitoringData.created_at,
+            datasets:[
+              {
+                label: "Water Temperture",
+                data: monitoringData.w_temp,
+                borderColor: "rgb(75, 100, 192)",
+              },
+            ]
+          }}
+          options={options}
+        />
+      </div>
+      <div className="flex justify-center">
+        <Line
+          data={{
+            labels: monitoringData.created_at,
+            datasets:[
+              {
+                label: "illumination",
+                data: monitoringData.illum,
+                borderColor: "rgb(75, 100, 192)",
+              },
+            ]
+          }}
+          options={options}
+        />
+      </div>
     </div>
   );
 };
