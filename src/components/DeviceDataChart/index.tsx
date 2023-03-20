@@ -27,8 +27,8 @@ const DeviceDataChart: React.FC = () => {
   // if (!monitoringData) return <div>Now Loading...</div>;
 
   if (currentDevice === 0 || monitoringData === undefined) return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <h1>デバイスを選択してください</h1>
+    <div className="h-screen w-screen flex justify-center items-center text-5xl font-bold">
+      デバイスを選択してください
     </div>
   );
   else
