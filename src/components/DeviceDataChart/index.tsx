@@ -23,7 +23,7 @@ const options: {} = {
 const DeviceDataChart: React.FC = () => {
   const currentDevice = useRecoilValue(selectDevice);
   const { data: monitoringData, error } = useSWR<MonitorData, Error>(`${baseURL}devices/${currentDevice}`, fetcher);
-  // if (error) return <div>Error....</div>;
+  //if (error) return <div className="h-screen w-screen flex justify-center items-center">Error....</div>;
   // if (!monitoringData) return <div>Now Loading...</div>;
 
   if (currentDevice === 0 || monitoringData === undefined) return (
