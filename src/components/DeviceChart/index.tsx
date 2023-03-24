@@ -13,7 +13,7 @@ type MonitorData = {
 type Foemater = (val: number[], time: Date[]) => number[];
 
 const dataformater: Foemater = (val, time) => {
-  const result = val.map((v, i) {
+  const result = val.map((v, i) => {
     [v, dayjs(time[i]).toDate().getTime]
   })
 
