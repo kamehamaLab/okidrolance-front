@@ -25,7 +25,7 @@ const DataChart: React.FC<{data: number[], name: string}> = ({data, name}) => {
     },
     tooltip: {
       x: {
-        format: 'yyyy/MM/dd'
+        format: 'yyyy/MM/dd/HH:mm'
       }
     },
     fill: {
@@ -37,7 +37,7 @@ const DataChart: React.FC<{data: number[], name: string}> = ({data, name}) => {
     xaxis: {
       type: 'datetime',
       labels: {
-        format: 'HH:mm',
+        format: 'MM/dd',
       }
     },
     yaxis: {
