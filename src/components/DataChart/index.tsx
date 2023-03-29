@@ -18,10 +18,11 @@ const DataChart: React.FC<{data: number[][], name: string}> = ({data, name}) => 
     },
     colors: ['#546E7A'],
     stroke: {
+      curve: 'straight',
       width: 3
     },
     dataLabels: {
-      enabled: false
+      enabled: true,
     },
     tooltip: {
       x: {
@@ -30,9 +31,6 @@ const DataChart: React.FC<{data: number[][], name: string}> = ({data, name}) => 
     },
     fill: {
       opacity: 1,
-    },
-    markers: {
-      size: 0
     },
     xaxis: {
       type: 'datetime',
