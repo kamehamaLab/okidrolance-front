@@ -3,7 +3,7 @@ import { ApexOptions } from "apexcharts";
 import Chart from 'react-apexcharts';
 import ja from "apexcharts/dist/locales/ja.json";
 
-const DataChart: React.FC<{data: number[], name: string}> = ({data, name}) => {
+const DataChart: React.FC<{data: number[][], name: string}> = ({data, name}) => {
   const optionMainLine: ApexOptions = {
     chart: {
       locales: [ja],
@@ -37,7 +37,16 @@ const DataChart: React.FC<{data: number[], name: string}> = ({data, name}) => {
     xaxis: {
       type: 'datetime',
       labels: {
-        format: 'MM/dd',
+        formatter: function (value, timestamp) {
+          var d = new Date(value);
+          console.log(d)
+          var month = ((d.getUTCMonth()+1)<10?'0':'') +  (d.getUTCMonth()+1);
+          var date = d.getUTCDate();
+          var hour = d.getUTCHours();
+          var minutes = d.getUTCMinutes();
+          var sec = d.getUTCSeconds();
+          return (month + "/" + date + "-" + hour + ":" + minutes + ":" + sec)
+        },
       }
     },
     yaxis: {

@@ -10,9 +10,9 @@ import DataChart from "../DataChart";
 Chart.register(...registerables)
 
 type MonitorData = {
-  temp: number[],
-  w_temp: number[],
-  illum: number[]
+  temp: number[][],
+  w_temp: number[][],
+  illum: number[][]
 };
 
 const DeviceDataCharts: React.FC = () => {
