@@ -37,7 +37,7 @@ const DataChart: React.FC<{data: number[][], name: string}> = ({data, name}) => 
     xaxis: {
       type: 'datetime',
       labels: {
-        formatter: function (value, timestamp) { //DB側で時間をミリ秒単位に変換してる（device.rb参照）
+        formatter: function (value) { //DB側で時間をミリ秒単位に変換してる（device.rb参照）
           var d = new Date(value);
           var month = ((d.getUTCMonth()+1)<10?'0':'') + (d.getUTCMonth()+1);  //一桁の時０を入れる処理
           var date = ((d.getUTCDate())<10?'0':'') + (d.getUTCDate());
