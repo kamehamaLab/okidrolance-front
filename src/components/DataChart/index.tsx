@@ -40,11 +40,11 @@ const DataChart: React.FC<{data: number[][], name: string}> = ({data, name}) => 
         formatter: function (value, timestamp) {
           var d = new Date(value);
           console.log(d)
-          var month = ((d.getUTCMonth()+1)<10?'0':'') +  (d.getUTCMonth()+1);
-          var date = d.getUTCDate();
-          var hour = d.getUTCHours();
-          var minutes = d.getUTCMinutes();
-          var sec = d.getUTCSeconds();
+          var month = ((d.getUTCMonth()+1)<10?'0':'') + (d.getUTCMonth()+1);  //一桁の時０を入れる処理
+          var date = ((d.getUTCDate())<10?'0':'') + (d.getUTCDate());
+          var hour = ((d.getUTCHours())<10?'0':'') + (d.getUTCHours());
+          var minutes = ((d.getUTCMinutes())<10?'0':'') + (d.getUTCMinutes());
+          var sec = ((d.getUTCSeconds())<10?'0':'') + (d.getUTCSeconds());
           return (month + "/" + date + "-" + hour + ":" + minutes + ":" + sec)
         },
       }
