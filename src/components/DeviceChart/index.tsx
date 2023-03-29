@@ -10,14 +10,17 @@ type MonitorData = {
   created_at: Date[]
 };
 
-type Foemater = (val: number[], time: Date[]) => number[];
+type Foemater = (val: number[] | undefined, time: Date[] | undefined) => number[][] | undefined;
 
 const dataformater: Foemater = (val, time) => {
-  const result = val.map((v, i) => {
-    [v, dayjs(time[i]).toDate().getTime]
-  })
-
-
+  if(val === undefined || time === undefined){
+    return undefined
+  }
+  let result: number[][] = [];
+  val.map((v, i) =>
+    result.push([v, dayjs(time[i]).unix()])
+  );
+  return result;
 };
 
 const DeviceChart: React.FC<{data?: MonitorData}> = ({data}) => {
@@ -86,11 +89,12 @@ const DeviceChart: React.FC<{data?: MonitorData}> = ({data}) => {
       tickAmount: 2
     }
   };
+  const temp = dataformater(data?.temp, data?.created_at);
 
   return(
     <div id="tempWrapper">
       <div id="chart">
-        <Chart options={optionMainLine} series={data?.temp} type="line" height={230} />
+        <Chart options={optionMainLine} series={temp} type="line" height={230} />
       </div>
       <div id="subChart">
         <Chart options={optionSubLine} series={data?.temp} type="area" height={130} />
