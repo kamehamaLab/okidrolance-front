@@ -30,9 +30,9 @@ const DeviceDataCharts: React.FC = () => {
   return(
     <div className="h-screen w-screen items-center">
       <h1 className="flex justify-center text-2xl p-2">選択中のデバイス:{currentDevice}</h1>
-      <DataChart data={monitoringData.temp} name={"temp"}/>
-      <DataChart data={monitoringData.w_temp} name={"w_temp"}/>
-      <DataChart data={monitoringData.illum} name={"illum"}/>
+      <DataChart data={monitoringData.temp} name={"温度"}/>
+      <DataChart data={monitoringData.w_temp} name={"水温"}/>
+      <DataChart data={monitoringData.illum} name={"照度"}/>
     </div>
   );
 };
