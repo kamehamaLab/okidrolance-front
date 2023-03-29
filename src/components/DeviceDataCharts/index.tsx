@@ -5,18 +5,17 @@ import useSWR from 'swr';
 import fetcher from "../../lib/fetcher";
 import { baseURL } from "../../lib/env";
 import { Chart, registerables } from "chart.js"
-import DeviceChart from "../DeviceChart";
+import DataChart from "../DataChart";
 
 Chart.register(...registerables)
 
 type MonitorData = {
   temp: number[],
   w_temp: number[],
-  illum: number[],
-  created_at: number[]
+  illum: number[]
 };
 
-const DeviceDataChart: React.FC = () => {
+const DeviceDataCharts: React.FC = () => {
   const currentDevice = useRecoilValue(selectDevice);
   const { data: monitoringData, error } = useSWR<MonitorData, Error>(`${baseURL}devices/${currentDevice}`, fetcher);
   //if (error) return <div className="h-screen w-screen flex justify-center items-center">Error....</div>;
@@ -31,9 +30,11 @@ const DeviceDataChart: React.FC = () => {
   return(
     <div className="h-screen w-screen items-center">
       <h1 className="flex justify-center text-2xl p-2">選択中のデバイス:{currentDevice}</h1>
-      <DeviceChart data={monitoringData} />
+      <DataChart data={monitoringData.temp} name={"temp"}/>
+      <DataChart data={monitoringData.w_temp} name={"w_temp"}/>
+      <DataChart data={monitoringData.illum} name={"illum"}/>
     </div>
   );
 };
 
-export default DeviceDataChart;
+export default DeviceDataCharts;
