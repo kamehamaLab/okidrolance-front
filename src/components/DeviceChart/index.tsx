@@ -1,7 +1,6 @@
 import React from "react";
-import ReactApexChart, { ApexOptions } from "apexcharts";
+import { ApexOptions } from "apexcharts";
 import Chart from 'react-apexcharts';
-import dayjs from 'dayjs'
 
 type MonitorData = {
   temp: number[],
@@ -37,17 +36,11 @@ const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
     xaxis: {
       type: 'datetime',
     },
-    series: [{
-      name: "temp",
-      data: data.temp
-    }],
     yaxis: {
       min: 0,
       max: 80
     }
   };
-
-  console.log(data?.temp)
 
   const optionSubLine: ApexOptions = {
     chart: {
@@ -86,10 +79,10 @@ const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
   return(
     <div id="tempWrapper">
       <div id="chart">
-        <Chart options={optionMainLine} series={optionMainLine.series} type="line" height={230} />
+        <Chart options={optionMainLine} series={[{name: "temp", data: data.temp}]} type="line" height={230} />
       </div>
       <div id="subChart">
-        <Chart options={optionSubLine} series={optionMainLine.series} type="area" height={130} />
+        <Chart options={optionSubLine} series={[{name: "temp", data: data.temp}]} type="area" height={130} />
       </div>
     </div>
   );
