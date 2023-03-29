@@ -10,20 +10,7 @@ type MonitorData = {
   created_at: Date[]
 };
 
-type Foemater = (val: number[] | undefined, time: Date[] | undefined) => number[][] | undefined;
-
-const dataformater: Foemater = (val, time) => {
-  if(val === undefined || time === undefined){
-    return undefined
-  }
-  let result: number[][] = [];
-  val.map((v, i) =>
-    result.push([v, dayjs(time[i]).unix()])
-  );
-  return result;
-};
-
-const DeviceChart: React.FC<{data?: MonitorData}> = ({data}) => {
+const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
   const optionMainLine: ApexOptions = {
     chart: {
       id: 'chart1',
@@ -49,7 +36,11 @@ const DeviceChart: React.FC<{data?: MonitorData}> = ({data}) => {
     },
     xaxis: {
       type: 'datetime',
-    }
+    },
+    series: [{
+      name: "temp",
+      data: data.temp
+    }]
   };
 
   console.log(data?.temp)
@@ -89,15 +80,14 @@ const DeviceChart: React.FC<{data?: MonitorData}> = ({data}) => {
       tickAmount: 2
     }
   };
-  const temp = dataformater(data?.temp, data?.created_at);
 
   return(
     <div id="tempWrapper">
       <div id="chart">
-        <Chart options={optionMainLine} series={temp} type="line" height={230} />
+        <Chart options={optionMainLine} series={optionMainLine.series} type="line" height={230} />
       </div>
       <div id="subChart">
-        <Chart options={optionSubLine} series={data?.temp} type="area" height={130} />
+        <Chart options={optionSubLine} series={optionMainLine.series} type="area" height={130} />
       </div>
     </div>
   );
