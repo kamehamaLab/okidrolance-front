@@ -7,7 +7,7 @@ type MonitorData = {
   temp: number[],
   w_temp: number[],
   illum: number[],
-  created_at: Date[]
+  created_at: number[]
 };
 
 const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
@@ -40,7 +40,11 @@ const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
     series: [{
       name: "temp",
       data: data.temp
-    }]
+    }],
+    yaxis: {
+      min: 0,
+      max: 80
+    }
   };
 
   console.log(data?.temp)
@@ -56,10 +60,6 @@ const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
       },
       selection: {
         enabled: true,
-        xaxis: {
-          min: dayjs(data?.created_at[data.created_at.length - 10]).toDate().getTime(),
-          max: dayjs(data?.created_at[data.created_at.length - 1]).toDate().getTime()
-        }
       },
     },
     colors: ['#008FFB'],
@@ -77,7 +77,9 @@ const DeviceChart: React.FC<{data: MonitorData}> = ({data}) => {
       }
     },
     yaxis: {
-      tickAmount: 2
+      tickAmount: 2,
+      min: 0,
+      max: 80
     }
   };
 

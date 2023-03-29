@@ -13,7 +13,7 @@ type MonitorData = {
   temp: number[],
   w_temp: number[],
   illum: number[],
-  created_at: Date[]
+  created_at: number[]
 };
 
 const DeviceDataChart: React.FC = () => {
